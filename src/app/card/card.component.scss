@@ -1,0 +1,15 @@
+:host {
+  font-size: xx-large;
+  border: 1px solid aliceblue;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+
+  span {
+    user-select: none;
+    &:not(.flipped) {
+      visibility: hidden;
+    }
+  }
+}

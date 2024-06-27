@@ -1,3 +1,9 @@
-@for (symbol of cards(); track $index) {
-<app-card [symbol]="symbol" />
+@for (symbol of cards(); track $index; let index = $index) {
+<app-card
+  [symbol]="symbol"
+  [flipped]="flippedIndices().includes(index)"
+  (flippedChange)="onFlip(index)"
+  [discovered]="discovered().includes(symbol)"
+/>
 }
+<span>Moves: {{ numberOfAttempts() }}</span>

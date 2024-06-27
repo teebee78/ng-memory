@@ -12,4 +12,9 @@
       visibility: hidden;
     }
   }
+
+  &.discovered {
+    border: none;
+    visibility: hidden;
+  }
 }

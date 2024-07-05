@@ -1,3 +1,5 @@
-<span [ngClass]="{'flipped': flipped()}">
+@if (!discovered()) {
+<span [@revealed]="flipped()">
   {{ symbol() }}
 </span>
+}

@@ -49,6 +49,10 @@ export class BoardComponent {
   numberOfAttempts = computed(() => this.flipHistory().length);
 
   onFlip(cardIndex: number): void {
+    const [last] = this.flipHistory().slice(-1);
+    if (last === cardIndex) {
+      return;
+    }
     this.flipHistory.update((current) => current.concat(cardIndex));
   }
 }

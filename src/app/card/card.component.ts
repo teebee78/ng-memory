@@ -27,7 +27,7 @@ import {
     trigger('revealed', [
       state('true', style({ opacity: 1, scale: 1 })),
       state('false', style({ opacity: 0, scale: 0.5 })),
-      transition('* => *', animate('250ms ease'))
+      transition('* => *', animate('250ms ease')),
     ]),
     trigger('vanish', [
       transition(':leave', [

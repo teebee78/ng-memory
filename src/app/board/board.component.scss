@@ -1,5 +1,7 @@
 :host {
+  --cell-size: 50px;
   display: grid;
-  grid-template-columns: repeat(8, 50px);
-  gap: 10px ;
+  grid-template-columns: repeat(8, var(--cell-size));
+  gap: 10px;
+  grid-auto-rows: var(--cell-size);
 }

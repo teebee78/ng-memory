@@ -3,8 +3,8 @@ import {
   computed,
   input,
   signal,
-  ɵclearResolutionOfComponentResourcesQueue,
 } from '@angular/core';
+import { JsonPipe } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 
 @Component({
@@ -17,6 +17,12 @@ import { CardComponent } from '../card/card.component';
 export class BoardComponent {
   cards = input.required<string[]>();
   flipHistory = signal<number[]>([]);
+  
+  flips: Array<{index: number, symbol: string}> = [];
+
+  penalty = 0;
+
+
   discovered = computed(() => {
     const flipedSymbols = this.flipHistory()
       .map((each) => this.cards().at(each))
@@ -54,5 +60,15 @@ export class BoardComponent {
       return;
     }
     this.flipHistory.update((current) => current.concat(cardIndex));
+
+
+    // new way without internal signals
+    this.flips.push({index: cardIndex, symbol: this.cards().at(cardIndex)!});
+    if (this.flips.length % 2 == 0) {
+      var [first, second] = this.flips.slice(-2);
+      if (first.symbol !== second.symbol) {
+        this.penalty += this.flips.filter(({symbol}) => symbol === second.symbol).length - 1;;
+      }
+    }
   }
 }

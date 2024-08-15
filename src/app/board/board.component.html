@@ -1,10 +1,14 @@
-@for (symbol of cards(); track $index; let index = $index) {
-<app-card
-  [symbol]="symbol"
-  [flipped]="flippedIndices().includes(index)"
-  (flippedChange)="onFlip(index)"
-  [discovered]="discovered().includes(symbol)"
-/>
-}
-<span>Clicks: {{ numberOfAttempts() }}</span>
-<span>Penalty: {{ penalty }}</span>
+<section class="board">
+  @for (symbol of cards(); track $index; let index = $index) {
+  <app-card
+    [symbol]="symbol"
+    [flipped]="flippedIndices.includes(index)"
+    (flippedChange)="onFlip(index)"
+    [discovered]="discoveredSymbols.includes(symbol)"
+  />
+  }
+</section>
+<section class="stats">
+  <span>Attemps: {{ attempts }}</span>
+  <span>Penalty: {{ penalty }}</span>
+</section>

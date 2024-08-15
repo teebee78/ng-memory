@@ -1,7 +1,17 @@
 :host {
   --cell-size: 50px;
-  display: grid;
-  grid-template-columns: repeat(8, var(--cell-size));
-  gap: 10px;
-  grid-auto-rows: var(--cell-size);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .board {
+    display: grid;
+    grid-template-columns: repeat(8, var(--cell-size));
+    gap: 10px;
+    grid-auto-rows: var(--cell-size);
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+  }
 }
